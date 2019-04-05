@@ -22,7 +22,7 @@ def send_mail(subject, to, html):
     thr.start()
     return thr
 
-def send_new_comment_mail(post):
+def send_new_comment_email(post):
     post_url = url_for('blog.show_post', post_id=post.id, _external=True) + "#comments"
     send_mail(subject='New comment', to=current_app.config['BLUELOG_EMAIL'],
               html='<p>New comment in post <i>%s</i>, click the link below to check:</p>'
@@ -30,7 +30,7 @@ def send_new_comment_mail(post):
                    '<p><small style="color: #868e96">Do not reply this email.</small></p>'
                    % (post.title, post_url, post_url))
 
-def send_new_reply_comment(comment):
+def send_new_reply_email(comment):
     post_url = url_for('blog.show_post', post_id=comment.post_id, _external=True) + '#comments'
     send_mail(subject='New reply', to=comment.email,
               html='<p>New reply for the comment you left in post <i>%s</i>, click the link below to check: </p>'

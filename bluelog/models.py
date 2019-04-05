@@ -27,11 +27,12 @@ class Post(db.Model):
     title = db.Column(db.String(60))
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    can_comment = db.Column(db.Boolean, default=True)
 
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     category = db.relationship('Category', back_populates='posts')
 
-    comment = db.relationship('Comment', backref='post', cascade='all,delete-orphan')
+    comments = db.relationship('Comment', backref='post', cascade='all,delete-orphan')
 
 # 评论
 class Comment(db.Model):
