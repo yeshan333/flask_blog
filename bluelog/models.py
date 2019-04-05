@@ -50,4 +50,10 @@ class Comment(db.Model):
     # 回复
     replied_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
     replied = db.relationship('Comment', back_populates='replies', remote_side=[id])
-    replies = db.relationship('Comment', back_populates='replied', cascade='all')   
+    replies = db.relationship('Comment', back_populates='replied', cascade='all')
+
+# 社交链接
+class Link(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    url = db.Column(db.String(255))   
