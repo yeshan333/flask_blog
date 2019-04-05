@@ -7,6 +7,7 @@ from flask_ckeditor import CKEditor
 from flask_mail import Mail
 from flask_moment import Moment
 from flask_login import LoginManager
+from flask_wtf import CSRFProtect
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -14,6 +15,7 @@ moment = Moment()
 mail = Mail()
 ckeditor = CKEditor()
 login_manage = LoginManager()
+csrf = CSRFProtect()
 
 # 用户加载，返回当前用户对应的模型类对象，未登录，默认返回flask-login内置的AnonymousUserMixin对象
 @login_manage.user_loader

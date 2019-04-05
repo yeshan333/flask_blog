@@ -5,6 +5,7 @@ from flask_login import login_required
 
 from bluelog.forms import SettingForm, PostForm, CategoryForm, LinkForm
 from bluelog.utils import redirect_back
+from bluelog.models import Post
 
 # 创建蓝本，第一个参数为蓝本的名称，第二个参数是包或模块的名称
 # 使用__name__方便判断蓝本的根目录，寻找模板文件夹和静态文件夹
@@ -36,6 +37,8 @@ def edit_post(post_id):
 @admin_bp.route('/post/<int:post_id>/delete', methods=['POST'])
 @login_required
 def delete_post(post_id):
+    post = Post.query.get(post_id)
+    post.delete()
     return redirect_back()
 
 @admin_bp.route('/post/<int:post_id>/set-comment', methods=['POST'])

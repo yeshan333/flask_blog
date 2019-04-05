@@ -6,8 +6,10 @@ import click
 
 
 from flask import Flask, render_template
+from flask_wtf.csrf import CSRFError
+
 from bluelog.settings import config
-from bluelog.extensions import bootstrap, db, moment, mail, ckeditor, login_manage
+from bluelog.extensions import bootstrap, db, moment, mail, ckeditor, login_manage, csrf
 from bluelog.blueprints.admin import admin_bp
 from bluelog.blueprints.auth import auth_bp
 from bluelog.blueprints.blog import blog_bp
@@ -55,6 +57,7 @@ def register_extensions(app):
     mail.init_app(app)
     ckeditor.init_app(app)
     login_manage.init_app(app)
+    csrf.init_app(app)
 
 # 注册蓝本
 def register_blueprints(app):
@@ -91,6 +94,11 @@ def register_errors(app):
     @app.errorhandler(500)
     def internal_server_error(e):
         return render_template('errors/500.html'), 500
+    
+    # 自定义CSRF错误响应
+    @app.errorhandler(CSRFError)
+    def handle_csrf_error(e):
+        return render_template('errors/400.html', description=e.description), 400
 
 def register_commands(app):
     # 数据库初始化
