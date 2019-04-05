@@ -52,6 +52,16 @@
                         <a href="https://github.com/yeshan333" title="Fork me on GitHub">GitHub</a> -
                     </small>
                 </p>
+                <p class="float-right">
+                    <small>
+                        <!-- next参数用与存储当前页面路径，便于redirect_back -->
+                        {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.logout', next=request.full_path) }}">Logout</a>
+                        {% else %}
+                            <a href="{{ url_for('auth.login', next=request.full_path) }}">Login</a>
+                        {% endif %}
+                    </small>
+                </p>
             </footer>   
             {% end block %}
         </main>
