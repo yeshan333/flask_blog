@@ -21,3 +21,6 @@ def load_user(user_id):
     from bluelog.models import Admin
     user = Admin.query.get(int(user_id))
     return user
+
+login_manage.login_view = 'auth.login'
+login_manage.login_message_category = u'扑街，你没登陆'
