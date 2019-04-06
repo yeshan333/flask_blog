@@ -14,7 +14,7 @@ from bluelog.extensions import bootstrap, db, moment, mail, ckeditor, login_mana
 from bluelog.blueprints.admin import admin_bp
 from bluelog.blueprints.auth import auth_bp
 from bluelog.blueprints.blog import blog_bp
-from bluelog.models import Admin, Category, Comment
+from bluelog.models import Admin, Category, Comment, Post, Link
 
 def create_app(config_name=None):
     if config_name is None:
@@ -71,21 +71,21 @@ def register_blueprints(app):
 def register_shell_context(app):
     @app.shell_context_processor
     def make_shell_context():
-        return dict(db=db)
+        return dict(db=db, Admin=Admin, Category=Category, Comment=Comment, Post=Post)
 
 # 模板上下文
 def register_template_context(app):
     @app.context_processor
     def make_template_context():
         admin = Admin.query.first()
-        categories = Category.query.order_by(Category.name)
-
+        categories = Category.query.order_by(Category.name).all()
+        links = Link.query.order_by(Link.name).all()
         # 处理未审核评论数量
         if current_user.is_authenticated:
             unread_comments = Comment.query.filter_by(reviewed=False).count()
         else:
             unread_comments = None
-        return dict(admin=admin, categories=categories, unread_comments=unread_comments)
+        return dict(admin=admin, categories=categories, unread_comments=unread_comments, links=links)
 
 # 注册错误处理函数
 def register_errors(app):
