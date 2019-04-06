@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from flask import Blueprint, render_template, url_for, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 
+from bluelog.extensions import db
 from bluelog.forms import SettingForm, PostForm, CategoryForm, LinkForm
 from bluelog.utils import redirect_back
-from bluelog.models import Post
+from bluelog.models import Post, Category, Comment, Admin
 
 # 创建蓝本，第一个参数为蓝本的名称，第二个参数是包或模块的名称
 # 使用__name__方便判断蓝本的根目录，寻找模板文件夹和静态文件夹
@@ -15,6 +16,18 @@ admin_bp = Blueprint('admin',__name__)
 @login_required
 def settings():
     form = SettingForm()
+    if form.validate_on_submit():
+        current_user.name = form.name.data
+        current_user.blog_title = form.blog_title.data
+        current_user.blog_sub_title = form.blog_sub_title.data
+        current_user.about = form.about.data
+        db.session.commit()
+        flash('Setting updated.', 'success')
+        return redirect(url_for('blog.index'))
+    form.name.data = current_user.name
+    form.blog_title.data = current_user.blog_title
+    form.blog_sub_title.data = current_user.blog_sub_title
+    form.about.data = current_user.about
     return render_template('admin/settings.html', form=form)
 
 @admin_bp.route('/post/manage')
