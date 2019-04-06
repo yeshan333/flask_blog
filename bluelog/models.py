@@ -50,7 +50,7 @@ class Post(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     category = db.relationship('Category', back_populates='posts')
 
-    comments = db.relationship('Comment', backref='post', cascade='all,delete-orphan')
+    comments = db.relationship('Comment', back_populates='post' , cascade='all,delete-orphan') # backref='post'
 
 # 评论
 class Comment(db.Model):
@@ -69,7 +69,7 @@ class Comment(db.Model):
     # 回复
     replied_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
     replied = db.relationship('Comment', back_populates='replies', remote_side=[id])
-    replies = db.relationship('Comment', back_populates='replied', cascade='all')
+    replies = db.relationship('Comment', back_populates='replied', cascade='all, delete-orphan')
 
 # 社交链接
 class Link(db.Model):

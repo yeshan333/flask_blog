@@ -23,5 +23,5 @@ def redirect_back(default='blog.index', **kwargs):
         if not target:
             continue
         if is_safe_url(target):  # 用来判断目标是否属于本应用，防止open redirect漏洞
-            return url_for(target)
+            return redirect(target)
     return redirect(url_for(default, **kwargs))

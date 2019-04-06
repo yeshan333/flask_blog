@@ -17,9 +17,9 @@ blog_bp = Blueprint('blog', __name__)
 def index():
     """ posts = Post.query.order_by(Post.timestamp.desc()).all() """
     page = request.args.get('page', 1, type=int) # 通过查询字符串获取当前页数
-    per_page = current_app.config['BLUELOG_PER_PAGE'] # 每页数量
+    per_page = current_app.config['BLUELOG_POST_PER_PAGE'] # 每页数量
     # paginate方法的page默认值为1，per_page的默认值为20,pagination为分页对象
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page)
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
     posts = pagination.items # 当前页数的记录列表
     return render_template('blog/index.html', pagination=pagination, posts=posts)
 
@@ -37,7 +37,7 @@ def show_category(category_id):
     posts = pagination.items
     return render_template('blog/category.html', category=category, pagination=pagination, posts=posts)
 
-@blog_bp.route('post/<int:post_id>', methods=['GET', 'POST'])
+@blog_bp.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def show_post(post_id):
     post = Post.query.get_or_404(post_id)
     page = request.args.get('page', 1, type=int)
@@ -100,7 +100,7 @@ def reply_comment(comment_id):
 
 # 主题切换
 @blog_bp.route('/change-theme/<theme_name>')
-def change_name(theme_name):
+def change_theme(theme_name):
     if theme_name not in current_app.config['BLUELOG_THEME'].keys():
         abort(404)
     

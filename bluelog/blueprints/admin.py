@@ -38,7 +38,7 @@ def manage_post():
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
     posts = pagination.items
-    return render_template('/admin/manage_post.html', pagination=pagination, posts=posts)
+    return render_template('/admin/manage_post.html', pagination=pagination, posts=posts, page=page)
 
 @admin_bp.route('/post/new', methods=['GET', 'POST'])
 @login_required
@@ -53,7 +53,7 @@ def new_post():
         db.session.commit()
         flash('Post created !', 'sucess')
         return redirect(url_for('blog.show_post', post_id=post.id))
-    return render_template('/admin.new_post.html', foorm=form)
+    return render_template('/admin/new_post.html', form=form)
 
 @admin_bp.route('/post/<int:post_id>/edit', methods=['GET', 'POST'])
 @login_required
@@ -114,7 +114,7 @@ def manage_comment():
     pagination = filtered_comments.order_by(Comment.timestamp.desc()).paginate(page, per_page=per_page)
     comments = pagination.items
 
-    return render_template('/admin/manage_comment', comments=comments, pagination=pagination)
+    return render_template('/admin/manage_comment.html', comments=comments, pagination=pagination)
 
 @admin_bp.route('/comment/<int:comment_id>/approve', methods=['POST'])
 @login_required
@@ -164,7 +164,7 @@ def delete_category(category_id):
     if category.id == 1:
         flash('You can not delete the default category.', 'warning')
         return redirect(url_for('blog.index'))
-    catrgory.delete() # 此方法已在category model中定义
+    category.delete() # 此方法已在category model中定义
     flash('Category deleted.', 'success')
     return redirect(url_for('.manage_category'))
 
