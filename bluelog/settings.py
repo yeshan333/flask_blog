@@ -26,7 +26,7 @@ class BaseConfig(object):
     MAIL_DEFAULT_SENDER = ('Bluelog Admin', MAIL_USERNAME)
     
     # 博文配置
-    BLUELOG_EMAIL = os.getenv('BLUELOG_MAIL')
+    BLUELOG_EMAIL = os.getenv('BLUELOG_EMAIL')
     BLUELOG_POST_PER_PAGE = 10
     BLUELOG_MANAGE_POST_PER_PAGE = 15
     BLUELOG_COMMENT_PER_PAGE = 15

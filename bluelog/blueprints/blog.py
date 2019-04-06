@@ -83,7 +83,7 @@ def show_post(post_id):
         else:
             flash('Thanks, your comment will be published after reviewed.', 'info')
             # admin_email = current_app.config['BLUELOG_EMAIL']
-            # send_new_comment_email(post)
+            send_new_comment_email(post)
         return redirect(url_for('.show_post', post_id=post_id))
     return render_template('blog/post.html', post=post, comments=comments, pagination=pagination, form=form)
 
