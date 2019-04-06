@@ -16,7 +16,7 @@ from bluelog.blueprints.auth import auth_bp
 from bluelog.blueprints.blog import blog_bp
 from bluelog.models import Admin, Category, Comment
 
-def create_add(config_name=None):
+def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_CONFIG', 'development') 
 

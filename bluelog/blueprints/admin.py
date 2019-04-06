@@ -160,6 +160,12 @@ def edit_category(category_id):
 @admin_bp.route('/category/<int:category_id>/delete', methods=['POST'])
 @login_required
 def delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    if category.id == 1:
+        flash('You can not delete the default category.', 'warning')
+        return redirect(url_for('blog.index'))
+    catrgory.delete() # 此方法已在category model中定义
+    flash('Category deleted.', 'success')
     return redirect(url_for('.manage_category'))
 
 # ----------------------------------------------------------------------------------

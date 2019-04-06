@@ -1,2 +1,2 @@
-FLASK_APP=bluelog:create_app('development')
+FLASK_APP=bluelog
 FLAKS_ENV=development
