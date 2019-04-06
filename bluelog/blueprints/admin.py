@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 from bluelog.extensions import db
 from bluelog.forms import SettingForm, PostForm, CategoryForm, LinkForm
 from bluelog.utils import redirect_back
-from bluelog.models import Post, Category, Comment, Admin
+from bluelog.models import Post, Category, Comment, Admin, Link
 
 # 创建蓝本，第一个参数为蓝本的名称，第二个参数是包或模块的名称
 # 使用__name__方便判断蓝本的根目录，寻找模板文件夹和静态文件夹
@@ -119,7 +119,7 @@ def manage_comment():
 @admin_bp.route('/comment/<int:comment_id>/approve', methods=['POST'])
 @login_required
 def approve_comment(comment_id):
-    comment = Comment.get_or_404(comment_id)
+    comment = Comment.query.get_or_404(comment_id)
     comment.reviewed = True
     db.session.commit()
     flash('Comment published.','success')

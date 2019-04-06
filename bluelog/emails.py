@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # 评论提醒
 
+import os
+
 from threading import Thread
 
 from flask import url_for, current_app
@@ -22,9 +24,10 @@ def send_mail(subject, to, html):
     thr.start()
     return thr
 
-def send_new_comment_email(post):
-    post_url = url_for('blog.show_post', post_id=post.id, _external=True) + "#comments"
-    send_mail(subject='New comment', to=current_app.config['BLUELOG_EMAIL'],
+def send_new_comment_email(post,):
+    post_url = url_for('blog.show_post', post_id=post.id, _external=True) + '#comments'
+    # email = current_app.config['BLUELOG_EMAIL'],不清楚当前代理对象为什么是None
+    send_mail(subject='New comment', to=os.getenv('BLUELOG_EMAIL'),
               html='<p>New comment in post <i>%s</i>, click the link below to check:</p>'
                    '<p><a href="%s">%s</a></P>'
                    '<p><small style="color: #868e96">Do not reply this email.</small></p>'

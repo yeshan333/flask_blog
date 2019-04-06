@@ -62,7 +62,6 @@ def show_post(post_id):
     
     if form.validate_on_submit():
         author = form.author.data
-        author = form.author.data
         email = form.email.data
         site = form.site.data
         body = form.body.data
@@ -83,9 +82,9 @@ def show_post(post_id):
             flash('Comment published.', 'success')
         else:
             flash('Thanks, your comment will be published after reviewed.', 'info')
-            send_new_comment_email(post)
+            # admin_email = current_app.config['BLUELOG_EMAIL']
+            # send_new_comment_email(post)
         return redirect(url_for('.show_post', post_id=post_id))
-
     return render_template('blog/post.html', post=post, comments=comments, pagination=pagination, form=form)
 
 # 回复功能
@@ -101,9 +100,9 @@ def reply_comment(comment_id):
 # 主题切换
 @blog_bp.route('/change-theme/<theme_name>')
 def change_theme(theme_name):
-    if theme_name not in current_app.config['BLUELOG_THEME'].keys():
+    if theme_name not in current_app.config['BLUELOG_THEMES'].keys():
         abort(404)
     
     response = make_response(redirect_back()) # 生成一个重定向啊应
-    response.set_cookies('theme', theme_name, max_age=30*24*60*60)
+    response.set_cookie('theme', theme_name, max_age=30*24*60*60)
     return response
