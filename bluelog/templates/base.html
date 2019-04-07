@@ -12,8 +12,8 @@
     <link rel="stylesheet"
             href="{{ url_for('static', filename='css/%s.min.css' % request.cookies.get('theme', 'perfect_blue')) }}"
             type="text/css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     {% endblock head %}
 </head>
 
@@ -28,8 +28,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
-                    {{ render_nav_item('blog.index', 'Home') }}
-                    {{ render_nav_item('blog.about', 'About') }}
+                    <i class="fas fa-home fa-fw" style="margin: 12px; width: 1px"></i>{{ render_nav_item('blog.index', 'Home') }}
+                    <i class="fas fa-home fa-fw" style="margin: 12px; width: 1px"></i>{{ render_nav_item('blog.about', 'About') }} 
                 </ul>
                 <!-- 管理员导航 -->
                 <ul class="nav navbar-nav navbar-right">
@@ -85,13 +85,13 @@
         
         {% block content %}{% endblock %}
 
-        <div class="goTop" id="js-go_top"><span class="fas fa-arrow-up"></span></div>
+        <div class="goTop" id="js-go_top"><span class="fas fa-hand-point-up"></span></div>
 
         {% block footer %}
         <footer>
             <p class="float-left">
                 <small> &copy; 2019 <a href="https://shansan.top" title="Written by shansan">ShanSan</a> -
-                    <a href="https://github.com/yeshan333" title="Fork me on GitHub">GitHub</a> -
+                    <a href="https://github.com/yeshan333" title="Fork me on GitHub">GitHub</a>
                 </small>
             </p>
             <p class="float-right">
@@ -109,10 +109,9 @@
     </main>
 
     {% block scripts %}
-        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-        <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/GoToTop.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/script.js')}}"></script>
         {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
