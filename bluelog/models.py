@@ -5,6 +5,8 @@ from bluelog.extensions import db
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from bluelog.extensions import whooshee
+from bluelog.extensions import whooshee
 
 # 管理员模型
 class Admin(db.Model, UserMixin):
@@ -24,9 +26,10 @@ class Admin(db.Model, UserMixin):
         return check_password_hash(self.password_hash, password)
 
 # 分类
+@whooshee.register_model('name')
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), unique=True)
+    name = db.Column(db.String(30), unique=True, index=True)
     
     posts = db.relationship('Post', back_populates='category')
 
@@ -39,9 +42,10 @@ class Category(db.Model):
         db.session.commit()
 
 # 文章
+@whooshee.register_model('title')
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(60))
+    title = db.Column(db.String(60), index=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     # 评论控制

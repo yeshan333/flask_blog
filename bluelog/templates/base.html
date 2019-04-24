@@ -31,6 +31,13 @@
                     <i class="fas fa-home fa-fw" style="margin: 12px; width: 1px"></i>{{ render_nav_item('blog.index', 'Home') }}
                     <i class="fas fa-home fa-fw" style="margin: 12px; width: 1px"></i>{{ render_nav_item('blog.about', 'About') }} 
                 </ul>
+                <!-- 搜索 -->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>               
                 <!-- 管理员导航 -->
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
