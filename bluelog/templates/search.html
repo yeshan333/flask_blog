@@ -26,9 +26,7 @@
                         {{ category_card(item) }}
                         <br/>
                     {% else %}
-                        <a class="badge badge-light" href="{{ url_for('.show_tag', tag_id=item.id) }}">
-                            {{ item.name }} {{ item.photos|length }}
-                        </a>
+                        {{ post_card(item) }}
                     {% endif %}
                 {% endfor %}
             {% else %}

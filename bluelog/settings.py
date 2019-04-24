@@ -32,6 +32,9 @@ class BaseConfig(object):
     BLUELOG_COMMENT_PER_PAGE = 15
     # 主题选择
     BLUELOG_THEMES = {'perfect_blue':'Perfect Blue', 'black_swan':'Black Swan', 'nice_green':'Nice green'}
+    # 最小搜索字符限制
+    WHOOSHEE_MIN_STRING_LEN = 1
+
 
 # 开发环境
 class DevelopmentConfig(BaseConfig):

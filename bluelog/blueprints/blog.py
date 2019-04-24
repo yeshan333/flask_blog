@@ -122,9 +122,11 @@ def search():
 
     if what == 'category':
         pagination = Category.query.whooshee_search(q).paginate(page, per_page)
-    else:
+    elif what == 'title':
         pagination = Post.query.whooshee_search(q).paginate(page, per_page)
-    
+    else:
+        redirect_back()
+
     results = pagination.items
 
     return render_template('search.html', q=q, results=results, pagination=pagination, what=what)
