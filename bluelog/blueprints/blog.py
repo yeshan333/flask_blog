@@ -120,10 +120,10 @@ def search():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['BLUELOG_POST_PER_PAGE']
 
-    if what == 'category':
-        pagination = Category.query.whooshee_search(q).paginate(page, per_page)
-    elif what == 'title':
+    if what == 'title':
         pagination = Post.query.whooshee_search(q).paginate(page, per_page)
+    elif what == 'category':
+        pagination = Category.query.whooshee_search(q).paginate(page, per_page)
     else:
         redirect_back()
 

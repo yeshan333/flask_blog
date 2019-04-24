@@ -11,10 +11,10 @@
     <div class="row">
         <div class="col-md-3">
             <div class="nav nav-pills flex-column" role="tablist" aria-orientation="vertical">
-                <a class="nav-item nav-link {% if what == 'category' %}active{% endif %}"
-                   href="{{ url_for('blog.search', q=q, what='category') }}">Category</a>
                 <a class="nav-item nav-link {% if what == 'title' %}active{% endif %}"
                    href="{{ url_for('blog.search', q=q, what='title') }}">Title</a>
+                <a class="nav-item nav-link {% if what == 'category' %}active{% endif %}"
+                   href="{{ url_for('blog.search', q=q, what='category') }}">Category</a>
             </div>
         </div>
 
@@ -24,7 +24,6 @@
                 {% for item in results %}
                     {% if what == 'category' %}
                         {{ category_card(item) }}
-                        <br/>
                     {% else %}
                         {{ post_card(item) }}
                     {% endif %}
