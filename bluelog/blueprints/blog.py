@@ -106,3 +106,25 @@ def change_theme(theme_name):
     response = make_response(redirect_back()) # 生成一个重定向啊应
     response.set_cookie('theme', theme_name, max_age=30*24*60*60)
     return response
+
+# 搜索功能
+@blog_bp.route('/search')
+def search():
+    q = request.args.get('q', '')
+    if q == '':
+        flash('Enter keywords about category or post title', 'warning')
+        return redirect_back()
+    
+    # 获取查询类型，再模板中给出
+    what = request.args.get('what', 'title')
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['BLUELOG_POST_PER_PAGE']
+
+    if what == 'category':
+        pagination = Category.query.whooshee_search(q).paginate(page, per_page)
+    else:
+        pagination = Post.query.whooshee_search(q).paginate(page, per_page)
+    
+    results = pagination.items
+
+    return render_template('search.html', q=q, results=results, pagination=pagination, what=what)

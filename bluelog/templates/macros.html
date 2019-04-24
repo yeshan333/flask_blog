@@ -24,3 +24,42 @@
     </ul>
 </nav>
 {% endmacro %}
+
+{# 搜索 #}
+{% macro category_card(category) %}
+    <table>
+        <thead>
+            <tr>
+                <td>Category</td>
+                <td>Link</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                {{category.name}}
+            </td>
+            <td>
+                <a href="{{ url_for('blog.show_category', category_id=category.id) }}">Fllow me</a>
+            </td>
+        </tr>
+    </table>
+{% endmacro %}
+
+{% macro post_card(post) %}
+    <table>
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Link</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                {{ post.title }}
+            </td>
+            <td>
+                <a href="{{ url_for('blog.show_post', post_id=post.id) }}">Fllow me</a>
+            </td>
+        </tr>
+    </table>
+{% endmacro %}
