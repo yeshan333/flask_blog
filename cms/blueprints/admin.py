@@ -3,10 +3,10 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash, current_app
 from flask_login import login_required, current_user
 
-from bluelog.extensions import db
-from bluelog.forms import SettingForm, PostForm, CategoryForm, LinkForm
-from bluelog.utils import redirect_back
-from bluelog.models import Post, Category, Comment, Admin, Link
+from cms.extensions import db
+from cms.forms import SettingForm, PostForm, CategoryForm, LinkForm
+from cms.utils import redirect_back
+from cms.models import Post, Category, Comment, Admin, Link
 
 # 创建蓝本，第一个参数为蓝本的名称，第二个参数是包或模块的名称
 # 使用__name__方便判断蓝本的根目录，寻找模板文件夹和静态文件夹
@@ -36,7 +36,7 @@ def settings():
 @login_required
 def manage_post():
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['CMS_MANAGE_POST_PER_PAGE'])
     posts = pagination.items
     return render_template('/admin/manage_post.html', pagination=pagination, posts=posts, page=page)
 
@@ -102,7 +102,7 @@ def set_comment(post_id):
 def manage_comment():
     filter_rule = request.args.get('filter', 'all') # 获取过滤规则，以显示不同的评论
     page = request.args.get('page', 1, type=int)
-    per_page = current_app.config['BLUELOG_COMMENT_PER_PAGE']
+    per_page = current_app.config['CMS_COMMENT_PER_PAGE']
 
     if filter_rule == 'unread':
         filtered_comments = Comment.query.filter_by(reviewed=False)

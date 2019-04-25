@@ -8,7 +8,7 @@ from threading import Thread
 from flask import url_for, current_app
 from flask_mail import Message
 
-from bluelog.extensions import mail
+from cms.extensions import mail
 
 
 # 异步方式发送

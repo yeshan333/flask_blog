@@ -22,7 +22,7 @@ whooshee = Whooshee()
 # 用户加载，返回当前用户对应的模型类对象，未登录，默认返回flask-login内置的AnonymousUserMixin对象
 @login_manage.user_loader
 def load_user(user_id):
-    from bluelog.models import Admin
+    from cms.models import Admin
     user = Admin.query.get(int(user_id))
     return user
 

@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, ValidationError, TextAreaField, HiddenField 
 from wtforms.validators import DataRequired, Length, URL, Optional, Email
 
-from bluelog.models import Category
+from cms.models import Category
 
 # 登录表单
 class LoginForm(FlaskForm):

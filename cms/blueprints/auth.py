@@ -3,9 +3,9 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_user, current_user, login_required, logout_user
 
-from bluelog.models import Admin
-from bluelog.forms import LoginForm
-from bluelog.utils import redirect_back
+from cms.models import Admin
+from cms.forms import LoginForm
+from cms.utils import redirect_back
 
 auth_bp = Blueprint('auth', __name__)
 

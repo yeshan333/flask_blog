@@ -9,18 +9,18 @@ from flask import Flask, render_template
 from flask_wtf.csrf import CSRFError
 from flask_login import current_user
 
-from bluelog.settings import config
-from bluelog.extensions import bootstrap, db, moment, mail, ckeditor, login_manage, csrf, whooshee
-from bluelog.blueprints.admin import admin_bp
-from bluelog.blueprints.auth import auth_bp
-from bluelog.blueprints.blog import blog_bp
-from bluelog.models import Admin, Category, Comment, Post, Link
+from cms.settings import config
+from cms.extensions import bootstrap, db, moment, mail, ckeditor, login_manage, csrf, whooshee
+from cms.blueprints.admin import admin_bp
+from cms.blueprints.auth import auth_bp
+from cms.blueprints.blog import blog_bp
+from cms.models import Admin, Category, Comment, Post, Link
 
 def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_CONFIG', 'development') 
 
-    app = Flask('bluelog')
+    app = Flask('cms')
     app.config.from_object(config[config_name])
 
     register_logging(app)
@@ -126,7 +126,7 @@ def register_commands(app):
     @click.option('--post', default=50, help='quantity of posts, default is 50.')
     @click.option('--comment', default=10, help='quantity of comments, default is 500.')
     def forge(category, post, comment):
-        from bluelog.fakes import fake_admin, fake_categories, fake_comments, fake_posts
+        from cms.fakes import fake_admin, fake_categories, fake_comments, fake_posts
 
         db.drop_all()
         db.create_all()

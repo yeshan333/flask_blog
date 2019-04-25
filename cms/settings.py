@@ -23,15 +23,15 @@ class BaseConfig(object):
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = ('Bluelog Admin', MAIL_USERNAME)
+    MAIL_DEFAULT_SENDER = ('CMS Admin', MAIL_USERNAME)
     
     # 博文配置
-    BLUELOG_EMAIL = os.getenv('BLUELOG_EMAIL')
-    BLUELOG_POST_PER_PAGE = 10
-    BLUELOG_MANAGE_POST_PER_PAGE = 15
-    BLUELOG_COMMENT_PER_PAGE = 15
+    CMS_EMAIL = os.getenv('CMS_EMAIL')
+    CMS_POST_PER_PAGE = 10
+    CMS_MANAGE_POST_PER_PAGE = 15
+    CMS_COMMENT_PER_PAGE = 15
     # 主题选择
-    BLUELOG_THEMES = {'perfect_blue':'Perfect Blue', 'black_swan':'Black Swan', 'nice_green':'Nice green'}
+    CMS_THEMES = {'perfect_blue':'Perfect Blue', 'black_swan':'Black Swan', 'nice_green':'Nice green'}
     # 最小搜索字符限制
     WHOOSHEE_MIN_STRING_LEN = 1
 

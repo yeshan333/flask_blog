@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from bluelog.extensions import db
+from cms.extensions import db
 
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from bluelog.extensions import whooshee
+from cms.extensions import whooshee
 
 # 管理员模型
 class Admin(db.Model, UserMixin):
