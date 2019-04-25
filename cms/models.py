@@ -78,4 +78,5 @@ class Comment(db.Model):
 class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
-    url = db.Column(db.String(255))   
+    url = db.Column(db.String(255)) 
+    icon = db.Column(db.String(50))  

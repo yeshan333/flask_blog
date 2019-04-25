@@ -62,4 +62,5 @@ class SettingForm(FlaskForm):
 class LinkForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(1, 30)])
     url = StringField('URL', validators=[DataRequired(), URL(), Length(1, 255)])
+    icon = StringField('Icon', validators=[DataRequired(), Length(0,50)])
     submit = SubmitField()

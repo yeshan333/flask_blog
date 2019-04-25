@@ -108,9 +108,9 @@ def fake_comments(count=500):
     db.session.commit()
 
 def fake_links():
-    twitter = Link(name='Twitter', url='#')
-    facebook = Link(name='Facebook', url='#')
-    linkedin = Link(name='LinkedIn', url='#')
-    google = Link(name='Google+', url='#')
+    twitter = Link(name='Twitter', url='#', icon="fab fa-twitter")
+    facebook = Link(name='Facebook', url='#', icon="fab fa-facebook")
+    linkedin = Link(name='LinkedIn', url='#', icon="fab fa-linkedin")
+    google = Link(name='Google+', url='#', icon="fab fa-google")
     db.session.add_all([twitter, facebook, linkedin, google])
     db.session.commit()

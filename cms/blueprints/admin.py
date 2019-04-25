@@ -201,7 +201,8 @@ def new_link():
     if form.validate_on_submit():
         name = form.name.data
         url = form.url.data
-        link = Link(name=name, url=url)
+        icon = form.icon.data
+        link = Link(name=name, url=url, icon=icon)
         db.session.add(link)
         db.session.commit()
         flash('Link created.', 'success')
@@ -217,11 +218,13 @@ def edit_link(link_id):
     if form.validate_on_submit():
         link.name = form.name.data
         link.url = form.url.data
+        link.icon = form.name.data
         db.session.commit()
         flash('Link updated.', 'success')
         return redirect(url_for('.manage_link'))
     form.name.data = link.name
     form.url.data = link.url
+    form.icon.data = link.icon
     return render_template('admin/edit_link.html', form=form)
 
 

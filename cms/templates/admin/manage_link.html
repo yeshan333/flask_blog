@@ -17,6 +17,7 @@
             <thead>
             <tr>
                 <th>No.</th>
+                <th>Icon</th>
                 <th>Name</th>
                 <th>URL</th>
                 <th>Actions</th>
@@ -25,6 +26,7 @@
             {% for link in links %}
                 <tr>
                     <td>{{ loop.index }}</td>
+                    <td><i class="{{ link.icon }}"></i></td>
                     <td>{{ link.name }}</td>
                     <td><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></td>
                     <td>

@@ -17,11 +17,14 @@
 
 {% if links %}
     <div class="card mb-3">
-        <div class="card-header">Links</div>
+        <div class="card-header"><li class="fas fa-medal fa-fw"></li>Links</div>
         <ul class="list-group list-group-flush">
             {% for link in links %}
                 <li class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center">
-                    <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+                    <a href="{{ link.url }}" target="_blank">
+                        <i class="{{ link.icon }}"></i>
+                        {{ link.name }}
+                    </a>
                 </li>
             {% endfor %}
         </ul>

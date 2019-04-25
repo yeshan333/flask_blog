@@ -126,7 +126,7 @@ def register_commands(app):
     @click.option('--post', default=50, help='quantity of posts, default is 50.')
     @click.option('--comment', default=10, help='quantity of comments, default is 500.')
     def forge(category, post, comment):
-        from cms.fakes import fake_admin, fake_categories, fake_comments, fake_posts
+        from cms.fakes import fake_admin, fake_categories, fake_comments, fake_posts, fake_links
 
         db.drop_all()
         db.create_all()
@@ -142,6 +142,9 @@ def register_commands(app):
 
         click.echo('Generating %d comments...' % comment)
         fake_comments(comment)
+
+        click.echo('Generating 4 links')
+        fake_links()
 
         click.echo('Done.')
     
