@@ -7,6 +7,7 @@
   - flask-moment
   - flask-sqlalchemy
   - bootstrap-flask
+  
 - Font Awesome
 - Jquery
 - Bootstrap
