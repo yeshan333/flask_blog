@@ -130,3 +130,18 @@ def search():
     results = pagination.items
 
     return render_template('search.html', q=q, results=results, pagination=pagination, what=what)
+
+# 文章归档
+@blog_bp.route('/archive')
+def archive():
+    """按时间归档文章"""
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    # 按月份分组所有post
+    data = {}
+    years = reversed(list(set([post.timestamp.year for post in posts])))
+    for year in years:
+        months = reversed(list(set([post.timestamp.month for post in posts if post.timestamp.year == year])))
+        for month in months:
+            post_items = [post for post in posts if post.timestamp.month == month]
+            data[(year, month)] = post_items
+    return render_template('blog/archive.html', data=data)

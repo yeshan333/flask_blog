@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Archive{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for (date, posts) in data.items() %}
+            <div class="row mb-8">
+                <div class="col">
+                    <h3>{{ date[0] }}年{{ date[1] }}月（{{ posts|length }}）</h3>
+                    <ul class="list-group list-group-flush">
+                    {% for post in posts %}
+                        <li class="list-group-item list-group-item-action">
+                            <a href="{{ url_for('blog.show_post', post_id=post.id) }}">{{ post.title }}</a>&nbsp;
+                            <span class="text-muted">{{ moment(post.timestamp).format('YYYY-MM-DD') }}</span>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
