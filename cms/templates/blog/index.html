@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% from 'macros.html' import high %}
 {% from 'bootstrap/pagination.html' import render_pager %}
 
 {% block title %}Home{% endblock %}
@@ -17,6 +18,7 @@
         </div>
         <div class="col-sm-4 sidebar">
             {% include 'blog/_sidebar.html' %}
+            {{ high() }}
         </div>
     </div>
 {% endblock %}
