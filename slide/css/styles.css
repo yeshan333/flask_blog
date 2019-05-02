@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+}
+
+
+.label {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 3px 5px 4px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 0.75em;
+  left: 10px;
+  top: -15px;
+  position: relative;
+}
+
+
+div.box p,
+div.box ul {
+  position: relative;
+  top: -20px;
+}
+
+.box.happy .label {
+  background-color: #46A546;
+}
+
+.happy {
+  background-color: #C0E0C0;
+  border-color: #46a546;
+}
+
+.box.angry .label {
+  background-color: #C43C35;
+}
+
+.angry {
+  background-color: #FFD7D5;
+  border-color: #C43C35;
+}
+
+.box.moody .label {
+  background-color: #F89406;
+}
+
+.moody {
+  background-color: #FFECD1;
+  border-color: #F89406;
+}
+
+div.box {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 0 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 25px;
+}
+
+
+.inverse {
+  background: #272822;
+  color: #777872;
+  text-shadow: 0 0 20px #333;
+}
+
+.inverse h1,
+.inverse h2,
+.inverse h3,
+.inverse ul,
+.inverse li,
+.inverse a {
+  color: #f3f3f3;
+  /*line-height: 0.8em;*/
+}
+
+.footnote {
+  position: absolute;
+  font-size: 25px;
+  bottom: 3em;
+  right: 3em;
+}
+
+.left-column {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+
+.left-column h2:last-of-type {
+  color: #000;
+}
+
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}
+
+a:hover{
+    color: green;
+}
