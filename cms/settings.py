@@ -34,6 +34,8 @@ class BaseConfig(object):
     CMS_THEMES = {'perfect_blue':'Perfect Blue', 'black_swan':'Black Swan', 'nice_green':'Nice green'}
     # 最小搜索字符限制
     WHOOSHEE_MIN_STRING_LEN = 1
+    # 关闭DebugToolbar对重定向的拦截
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
 
 
 # 开发环境

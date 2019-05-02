@@ -10,7 +10,7 @@ from flask_wtf.csrf import CSRFError
 from flask_login import current_user
 
 from cms.settings import config
-from cms.extensions import bootstrap, db, moment, mail, ckeditor, login_manage, csrf, whooshee
+from cms.extensions import bootstrap, db, moment, mail, ckeditor, login_manage, csrf, whooshee, debugtool
 from cms.blueprints.admin import admin_bp
 from cms.blueprints.auth import auth_bp
 from cms.blueprints.blog import blog_bp
@@ -60,6 +60,7 @@ def register_extensions(app):
     login_manage.init_app(app)
     csrf.init_app(app)
     whooshee.init_app(app)
+    # debugtool.init_app(app)
 
 # 注册蓝本
 def register_blueprints(app):

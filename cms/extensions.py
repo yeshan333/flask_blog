@@ -10,6 +10,8 @@ from flask_login import LoginManager
 from flask_wtf import CSRFProtect
 from flask_whooshee import Whooshee
 
+from flask_debugtoolbar import DebugToolbarExtension
+
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 moment = Moment()
@@ -18,6 +20,8 @@ ckeditor = CKEditor()
 login_manage = LoginManager()
 csrf = CSRFProtect()
 whooshee = Whooshee()
+# 开发调试,性能优化
+debugtool = DebugToolbarExtension()
 
 # 用户加载，返回当前用户对应的模型类对象，未登录，默认返回flask-login内置的AnonymousUserMixin对象
 @login_manage.user_loader

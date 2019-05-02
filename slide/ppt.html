@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>show</title>
+  <meta charset="utf-8">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 25px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+
+
+    .label {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      padding: 3px 5px 4px;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-size: 0.75em;
+      left: 10px;
+      top: -15px;
+      position: relative;
+    }
+
+
+    div.box p,
+    div.box ul {
+      position: relative;
+      top: -20px;
+    }
+
+    .box.happy .label {
+      background-color: #46A546;
+    }
+
+    .happy {
+      background-color: #C0E0C0;
+      border-color: #46a546;
+    }
+
+    .box.angry .label {
+      background-color: #C43C35;
+    }
+
+    .angry {
+      background-color: #FFD7D5;
+      border-color: #C43C35;
+    }
+
+    .box.moody .label {
+      background-color: #F89406;
+    }
+
+    .moody {
+      background-color: #FFECD1;
+      border-color: #F89406;
+    }
+
+    div.box {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      padding: 0 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 25px;
+    }
+
+
+    .inverse {
+      background: #272822;
+      color: #777872;
+      text-shadow: 0 0 20px #333;
+    }
+
+    .inverse h1,
+    .inverse h2,
+    .inverse h3,
+    .inverse ul,
+    .inverse li,
+    .inverse a {
+      color: #f3f3f3;
+      /*line-height: 0.8em;*/
+    }
+
+    .footnote {
+      position: absolute;
+      font-size: 25px;
+      bottom: 3em;
+      right: 3em;
+    }
+
+    .left-column {
+      color: #777;
+      width: 20%;
+      height: 92%;
+      float: left;
+    }
+
+    .left-column h2:last-of-type {
+      color: #000;
+    }
+
+    .right-column {
+      width: 75%;
+      float: right;
+      padding-top: 1em;
+    }
+
+    a:hover{
+        color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="source">
+
+class: center, middle, inverse
+
+# CMS
+
+.footnote[
+Slideshow was created by remark && yeshan
+]
+
+
+---
+
+class: center, middle
+
+[![ElERfS.png](https://s2.ax1x.com/2019/04/28/ElERfS.png)](http://flask.pocoo.org/)
+
+<div class="angry box">
+.center[
+## 微核心+扩展
+]
+</div>
+---
+class: middle
+
+.center[
+### [功能规划](http://naotu.baidu.com/file/5333627237c745360dfdd073a52a6561)
+]
+
+[![ElluHe.png](https://s2.ax1x.com/2019/04/29/ElluHe.png)](http://naotu.baidu.com/file/5333627237c745360dfdd073a52a6561)
+
+---
+class: inverse
+
+### 项目依赖
+
+- Flask
+  - [flask-login](https://github.com/maxcountryman/flask-login)
+  - [flask-mail](https://github.com/mattupstate/flask-mail)
+  - [flask-wtf](https://github.com/lepture/flask-wtf)
+  - [flask-moment](https://github.com/miguelgrinberg/Flask-Moment)
+  - [flask-sqlalchemy](https://github.com/pallets/flask-sqlalchemy)
+  - [bootstrap-flask](https://github.com/greyli/bootstrap-flask)
+  - [flask-whooshee](https://github.com/bkabrda/flask-whooshee)
+
+- [Font Awesome](https://fontawesome.com/)
+
+- [Jquery](http://jquery.com/)
+
+- [Bootstrap](https://v4.bootcss.com/)
+  - [Bootswatch](https://bootswatch.com/)
+
+- [faker](https://github.com/joke2k/faker)
+
+---
+
+.center[
+#### 项目结构
+]
+
+```md
+|——— blueprints(蓝本)
+|   |
+|   |—— __init__.py
+|   |
+|   |—— admin.py
+|   |
+|   |—— auth.py
+|   |
+|   |—— blog.py
+|
+|—— static
+|
+|—— templates
+|
+|—— emails.py
+|
+|—— extensions.py
+|
+|—— forms.py
+|
+|—— models.py
+|
+|—— settings.py
+|
+|—— utils.py
+|
+|—— fakes.py
+```
+
+---
+class: center, middle, inverse
+
+<div class="happy box">
+  <span class="label">thumbnail</span>
+  <p>
+    <a href="https://shansan.top/thumbnail/">缩略图</a>
+  </p>
+</div>
+
+
+<div class="angry box">
+<span class="label">follow me</span>
+<p>
+  <a href="https://shansan.top/trytobaidu/?q=shansan">戳我~~戳我~~</a>
+</p>
+</div>
+
+<div class="moody box">
+  <span class="label">Source</span>
+  <p>
+    <a href="https://github.com/yeshan333/blogtest">Source</a>
+  </p>
+</div>
+
+---
+
+.center[
+#### 寄语
+]
+
+<div class="happy box">
+  <span class="label">Tips:</span>
+  <p>
+    <ul>
+      <li>
+        时间并不有限
+      </li>
+      <li>
+        希望你们能找到自己感兴趣的方向，放手去学，不要怂
+      </li>
+    </ul>
+  </p>
+</div>
+
+<hr/>
+
+  .left-column[
+  ## 不
+  ## 忘
+  ## 初
+  ## 心
+]
+.right-column[
+  <br>
+  <br>
+  ![](images/1.png)
+]
+
+---
+class: center, middle
+
+<div class="moody box">
+<span class="label">2019/5/5</span>
+.middle[
+# 谢谢观看
+]
+</div>
+---
+    </textarea>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create({
+      highlightStyle: 'monokai'
+    });
+    //从新标签页打开链接
+    var allLinks = document.getElementsByTagName("a");
+    for (var i = 0; i != allLinks.length; i++) {
+      allLinks[i].target = "_blank";
+    }
+  </script>
+</body>
+
+</html>
