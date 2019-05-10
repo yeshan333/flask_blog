@@ -60,6 +60,7 @@ def register_extensions(app):
     login_manage.init_app(app)
     csrf.init_app(app)
     whooshee.init_app(app)
+    # debugtool.init_app(app)
 
 # 注册蓝本
 def register_blueprints(app):
